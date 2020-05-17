@@ -34,7 +34,6 @@ public class BagAggregate {
 
     @AggregateIdentifier
     private String bagRuleId;
-    private List<Bag> rules = new ArrayList<>();
 
 
     protected BagAggregate(){
@@ -84,11 +83,11 @@ public class BagAggregate {
 
 
 
-   @EventSourcingHandler
+ /*  @EventSourcingHandler
     protected void addBagRule(BagCreatedEvent event) {
-        rules.add(event.getBagRule());
-    }
 
+    }
+*/
     @CommandHandler
     public void publishRules(PublishBagRulesCommand cmd){
         apply(new BagRulesPublishedEvent(cmd.getBagRuleId(),cmd.getEnvironment(),LocalDateTime.now()));
