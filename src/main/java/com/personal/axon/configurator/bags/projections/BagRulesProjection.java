@@ -7,7 +7,7 @@ import com.personal.axon.configurator.bags.events.BagRuleCreatedEvent;
 import com.personal.axon.configurator.bags.events.BagRulesPublishedEvent;
 import com.personal.axon.configurator.bags.models.BagModel;
 import com.personal.axon.configurator.bags.models.BagCollectionModel;
-import com.personal.axon.configurator.bags.models.Environment;
+import com.personal.axon.configurator.bags.models.ConfigEnvironment;
 import lombok.extern.log4j.Log4j2;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
@@ -26,7 +26,7 @@ public class BagRulesProjection {
 
     public static final String DRAFT = "draft";
     private Map<String, BagModel> draftRules = new HashMap<>();
-    private Environment bagRulesEnvironment = new Environment();
+    private ConfigEnvironment bagRulesEnvironment = new ConfigEnvironment();
     private List<BagCollectionModel> snapShots = new ArrayList<>();
 
     private int lastestVersion;
@@ -97,7 +97,7 @@ public class BagRulesProjection {
         return draftRules.values();
     }
     @QueryHandler(queryName = "findAll")
-    public Environment findAll(){
+    public ConfigEnvironment findAll(){
         return bagRulesEnvironment;
     }
 

@@ -2,7 +2,7 @@ package com.personal.axon.configurator.bags.controllers;
 
 import com.personal.axon.configurator.bags.models.BagModel;
 import com.personal.axon.configurator.bags.models.BagCollectionModel;
-import com.personal.axon.configurator.bags.models.Environment;
+import com.personal.axon.configurator.bags.models.ConfigEnvironment;
 import com.personal.axon.configurator.bags.commands.CreateBagCommand;
 import com.personal.axon.configurator.bags.commands.CreateBagCollectionCommand;
 import com.personal.axon.configurator.bags.commands.DeleteBagCommand;
@@ -75,9 +75,9 @@ public class BagRestController {
 
 
     @GetMapping
-    public ResponseEntity<Environment> findAll() throws ExecutionException, InterruptedException
+    public ResponseEntity<ConfigEnvironment> findAll() throws ExecutionException, InterruptedException
     {
-        return ResponseEntity.ok(queryGateway.query("findAll", null, ResponseTypes.instanceOf(Environment.class)).get());
+        return ResponseEntity.ok(queryGateway.query("findAll", null, ResponseTypes.instanceOf(ConfigEnvironment.class)).get());
     }
 
     @GetMapping("/history")
