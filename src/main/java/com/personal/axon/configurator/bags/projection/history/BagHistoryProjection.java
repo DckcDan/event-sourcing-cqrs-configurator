@@ -1,10 +1,10 @@
-package com.personal.axon.configurator.bags.projections.history;
+package com.personal.axon.configurator.bags.projection.history;
 
-import com.personal.axon.configurator.bags.events.BagCreatedEvent;
-import com.personal.axon.configurator.bags.events.BagDeletedEvent;
-import com.personal.axon.configurator.bags.events.BagModifiedEvent;
-import com.personal.axon.configurator.bags.events.BagRulesPublishedEvent;
-import com.personal.axon.configurator.bags.models.BagModel;
+import com.personal.axon.configurator.bags.event.BagCreatedEvent;
+import com.personal.axon.configurator.bags.event.BagDeletedEvent;
+import com.personal.axon.configurator.bags.event.BagModifiedEvent;
+import com.personal.axon.configurator.bags.event.BagRulesPublishedEvent;
+import com.personal.axon.configurator.bags.model.BagModel;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Component;

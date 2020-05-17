@@ -1,15 +1,15 @@
-package com.personal.axon.configurator.bags.agregates;
+package com.personal.axon.configurator.bags.agregate;
 
-import com.personal.axon.configurator.bags.commands.CreateBagCommand;
-import com.personal.axon.configurator.bags.commands.CreateBagCollectionCommand;
-import com.personal.axon.configurator.bags.commands.DeleteBagCommand;
-import com.personal.axon.configurator.bags.commands.ModifyBagCommand;
-import com.personal.axon.configurator.bags.commands.PublishBagRulesCommand;
-import com.personal.axon.configurator.bags.events.BagCreatedEvent;
-import com.personal.axon.configurator.bags.events.BagDeletedEvent;
-import com.personal.axon.configurator.bags.events.BagModifiedEvent;
-import com.personal.axon.configurator.bags.events.BagRuleCreatedEvent;
-import com.personal.axon.configurator.bags.events.BagRulesPublishedEvent;
+import com.personal.axon.configurator.bags.command.CreateBagCommand;
+import com.personal.axon.configurator.bags.command.CreateBagCollectionCommand;
+import com.personal.axon.configurator.bags.command.DeleteBagCommand;
+import com.personal.axon.configurator.bags.command.ModifyBagCommand;
+import com.personal.axon.configurator.bags.command.PublishBagRulesCommand;
+import com.personal.axon.configurator.bags.event.BagCreatedEvent;
+import com.personal.axon.configurator.bags.event.BagDeletedEvent;
+import com.personal.axon.configurator.bags.event.BagModifiedEvent;
+import com.personal.axon.configurator.bags.event.BagRuleCreatedEvent;
+import com.personal.axon.configurator.bags.event.BagRulesPublishedEvent;
 import lombok.Data;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;

@@ -1,6 +1,6 @@
-package com.personal.axon.configurator.bags.events;
+package com.personal.axon.configurator.bags.event;
 
-import com.personal.axon.configurator.bags.agregates.Bag;
+import com.personal.axon.configurator.bags.agregate.Bag;
 import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 

@@ -1,7 +1,7 @@
-package com.personal.axon.configurator.bags.models;
+package com.personal.axon.configurator.bags.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.personal.axon.configurator.bags.events.Environment;
+import com.personal.axon.configurator.bags.event.Environment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

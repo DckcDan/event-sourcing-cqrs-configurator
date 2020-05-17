@@ -1,4 +1,4 @@
-package com.personal.axon.configurator.bags.models;
+package com.personal.axon.configurator.bags.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

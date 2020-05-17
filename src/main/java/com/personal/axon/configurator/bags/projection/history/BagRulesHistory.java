@@ -1,7 +1,7 @@
-package com.personal.axon.configurator.bags.projections.history;
+package com.personal.axon.configurator.bags.projection.history;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.personal.axon.configurator.bags.models.BagModel;
+import com.personal.axon.configurator.bags.model.BagModel;
 import lombok.Builder;
 import lombok.Data;
 

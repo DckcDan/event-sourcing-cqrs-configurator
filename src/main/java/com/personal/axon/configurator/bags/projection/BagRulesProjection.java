@@ -1,13 +1,13 @@
-package com.personal.axon.configurator.bags.projections;
+package com.personal.axon.configurator.bags.projection;
 
-import com.personal.axon.configurator.bags.events.BagCreatedEvent;
-import com.personal.axon.configurator.bags.events.BagDeletedEvent;
-import com.personal.axon.configurator.bags.events.BagModifiedEvent;
-import com.personal.axon.configurator.bags.events.BagRuleCreatedEvent;
-import com.personal.axon.configurator.bags.events.BagRulesPublishedEvent;
-import com.personal.axon.configurator.bags.models.BagModel;
-import com.personal.axon.configurator.bags.models.BagCollectionModel;
-import com.personal.axon.configurator.bags.models.ConfigEnvironment;
+import com.personal.axon.configurator.bags.event.BagCreatedEvent;
+import com.personal.axon.configurator.bags.event.BagDeletedEvent;
+import com.personal.axon.configurator.bags.event.BagModifiedEvent;
+import com.personal.axon.configurator.bags.event.BagRuleCreatedEvent;
+import com.personal.axon.configurator.bags.event.BagRulesPublishedEvent;
+import com.personal.axon.configurator.bags.model.BagModel;
+import com.personal.axon.configurator.bags.model.BagCollectionModel;
+import com.personal.axon.configurator.bags.model.ConfigEnvironment;
 import lombok.extern.log4j.Log4j2;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
@@ -68,23 +68,23 @@ public class BagRulesProjection {
     @EventHandler
     public void on(BagRulesPublishedEvent event){
 
-        if (com.personal.axon.configurator.bags.events.Environment.DEV.equals(event.getEnvironment())){
+        if (com.personal.axon.configurator.bags.event.Environment.DEV.equals(event.getEnvironment())){
             BagCollectionModel bagRules = new BagCollectionModel();
             bagRules.setVersion(String.valueOf(lastestVersion));
-            bagRules.setEnvironment(com.personal.axon.configurator.bags.events.Environment.DEV);
+            bagRules.setEnvironment(com.personal.axon.configurator.bags.event.Environment.DEV);
             bagRules.setCreateAt(LocalDateTime.now());
             bagRules.setBagRulesList(new ArrayList<>(draftRules.values()));
-            bagRulesEnvironment.getMap().put(com.personal.axon.configurator.bags.events.Environment.DEV, bagRules);
+            bagRulesEnvironment.getMap().put(com.personal.axon.configurator.bags.event.Environment.DEV, bagRules);
         }
-        if (com.personal.axon.configurator.bags.events.Environment.LIVE.equals(event.getEnvironment())){
+        if (com.personal.axon.configurator.bags.event.Environment.LIVE.equals(event.getEnvironment())){
             lastestVersion++;
             BagCollectionModel bagRules = new BagCollectionModel();
             bagRules.setVersion(String.valueOf(lastestVersion));
-            bagRules.setEnvironment(com.personal.axon.configurator.bags.events.Environment.LIVE);
+            bagRules.setEnvironment(com.personal.axon.configurator.bags.event.Environment.LIVE);
             bagRules.setCreateAt(LocalDateTime.now());
-            bagRules.setBagRulesList(new ArrayList<>(bagRulesEnvironment.getMap().get(com.personal.axon.configurator.bags.events.Environment.DEV).getBagRulesList()));
-            bagRulesEnvironment.getMap().put(com.personal.axon.configurator.bags.events.Environment.LIVE, bagRules);
-            bagRulesEnvironment.getMap().get(com.personal.axon.configurator.bags.events.Environment.DEV).setVersion(String.valueOf(lastestVersion));
+            bagRules.setBagRulesList(new ArrayList<>(bagRulesEnvironment.getMap().get(com.personal.axon.configurator.bags.event.Environment.DEV).getBagRulesList()));
+            bagRulesEnvironment.getMap().put(com.personal.axon.configurator.bags.event.Environment.LIVE, bagRules);
+            bagRulesEnvironment.getMap().get(com.personal.axon.configurator.bags.event.Environment.DEV).setVersion(String.valueOf(lastestVersion));
             snapShots.add(bagRules);
         }
 

@@ -1,4 +1,4 @@
-package com.personal.axon.configurator.bags.queries;
+package com.personal.axon.configurator.bags.query;
 
 import lombok.Data;
 

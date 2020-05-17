@@ -1,14 +1,14 @@
-package com.personal.axon.configurator.bags.controllers;
+package com.personal.axon.configurator.bags.controller;
 
-import com.personal.axon.configurator.bags.models.BagModel;
-import com.personal.axon.configurator.bags.models.BagCollectionModel;
-import com.personal.axon.configurator.bags.models.ConfigEnvironment;
-import com.personal.axon.configurator.bags.commands.CreateBagCommand;
-import com.personal.axon.configurator.bags.commands.CreateBagCollectionCommand;
-import com.personal.axon.configurator.bags.commands.DeleteBagCommand;
-import com.personal.axon.configurator.bags.commands.ModifyBagCommand;
-import com.personal.axon.configurator.bags.commands.PublishBagRulesCommand;
-import com.personal.axon.configurator.bags.projections.history.BagRulesHistory;
+import com.personal.axon.configurator.bags.model.BagModel;
+import com.personal.axon.configurator.bags.model.BagCollectionModel;
+import com.personal.axon.configurator.bags.model.ConfigEnvironment;
+import com.personal.axon.configurator.bags.command.CreateBagCommand;
+import com.personal.axon.configurator.bags.command.CreateBagCollectionCommand;
+import com.personal.axon.configurator.bags.command.DeleteBagCommand;
+import com.personal.axon.configurator.bags.command.ModifyBagCommand;
+import com.personal.axon.configurator.bags.command.PublishBagRulesCommand;
+import com.personal.axon.configurator.bags.projection.history.BagRulesHistory;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
@@ -67,7 +67,7 @@ public class BagRestController {
     }
 
     @PostMapping("/{bagRulesId}/publish/{env}")
-    public ResponseEntity<BagModel> publish(@PathVariable String bagRulesId, @PathVariable com.personal.axon.configurator.bags.events.Environment env) throws URISyntaxException {
+    public ResponseEntity<BagModel> publish(@PathVariable String bagRulesId, @PathVariable com.personal.axon.configurator.bags.event.Environment env) throws URISyntaxException {
         commandGateway.send(new PublishBagRulesCommand(bagRulesId,env));
         return ResponseEntity.ok().build();
     }

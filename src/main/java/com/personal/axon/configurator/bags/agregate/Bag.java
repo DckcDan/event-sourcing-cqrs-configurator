@@ -1,4 +1,4 @@
-package com.personal.axon.configurator.bags.agregates;
+package com.personal.axon.configurator.bags.agregate;
 
 import lombok.Data;
 
