@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class BagModifiedEvent
 {
 
-    @TargetAggregateIdentifier
+
     private final String bagRuleId;
     private final Bag bagRule;
     private final LocalDateTime createdAt;

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class BagDeletedEvent
 {
 
-    @TargetAggregateIdentifier
+
     private final String bagRuleId;
     private final String bagId;
     private final LocalDateTime createAt;
