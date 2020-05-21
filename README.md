@@ -1,22 +1,30 @@
 
-# Event sourcing and CQRS with axon
+# Event sourcing and CQRS with the Axon framework.
 
 ## Application
-The scope of this POC is to implement a simple application using event sourcing as a single source of truth and CQRS. 
-This covers a simple use case of an application to allow configure a product catalog(only bags) for an online e-commerce site.
+The scope of this POC is to implement a simple REST API using event sourcing as a single source of truth and CQRS. 
+This is a simple use case of an admin portal API that allows to configure a single product catalog namely bags. 
 
-The whole idea of this project is to manage product configuration and push them to various endpoints that the enviroments can consume or subscribe to.
+The configuration is stored as a stream of events, which allows retrieval of the product catalog history as well as having the current state
+of the given product catalog.
 
-how it works:
-1- A business user creates 3 bags.
+It will also expose a number of endpoints that allows to push configuration from DRAFT, to DEV environment to UAT and to LIVE. 
+The various environment will connect to this API to retrieve their configuration.
+
+
+How it works:
+1-  A business user creates 3 bags.
 2 - The bags are logged as events.
-3 - A projection will show the current changes
-4-  A rest endpoint will allow to push those changes to a DEV endpoint which will be used by a dev server to consume configuration
-5-  Same endpoint will allow to propagate those changes from DEV to LIVE and create an snapshot.
 
+As a result of that, the API will offer the following
 
-## Arhitecture 
-REST API powered by Commands and Queries.
+* An endpoint to retrieve the history of changes on a given product catalog.
+* An endpoint to retrieve the current state of the product catalog
+* An endpoint to publish a drafted product catalog to DEV, UAT, and LIVE
+* An endpoint for the various environments to consume DEV, UAT, and LIVE product configuration.
+
+## Architecture 
+REST API powered by the pattern CQRS (Command Query Responsibility Segregation).
 
 Commands creates events which are stored in the axon event store and they are also consumed by projections which are used by Queries.
 Nicely decoupled architecture that powers scalability.
